@@ -78,5 +78,17 @@ public class DisplayManager {
     public static boolean shouldClose() {
         return glfwWindowShouldClose(window);
     }
+    
+    public static float getAspectRatio() {
+        int[] width  = new int[1];
+        int[] height = new int[1];
+        // Use framebuffer size for correct OpenGL viewport scaling on HiDPI
+        glfwGetFramebufferSize(window, width, height);
+        return (float) width[0] / (float) height[0];
+    }
+    
+    public static long getWindow() {
+        return window;
+    }
 
 }

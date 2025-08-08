@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/jar/lwjgl.jar"/>
 	<classpathentry kind="lib" path="lib/jar/lwjgl-glfw.jar"/>
 	<classpathentry kind="lib" path="lib/jar/lwjgl-stb.jar"/>
+	<classpathentry kind="lib" path="lib/jar/joml-1.10.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
