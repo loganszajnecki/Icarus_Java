@@ -121,6 +121,7 @@ public final class OBJLoader {
         return loader.loadToVAO(
                 posArray,
                 texArray != null ? texArray : new float[0],
+                normArray,
                 indexArray
         );
     }
