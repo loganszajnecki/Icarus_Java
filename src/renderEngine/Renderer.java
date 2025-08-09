@@ -10,6 +10,7 @@ import models.RawModel;
 import models.TexturedModel;
 import entities.Entity;
 import shaders.StaticShader;
+import textures.ModelTexture;
 import toolbox.MathUtils;
 
 public class Renderer {
@@ -22,6 +23,8 @@ public class Renderer {
 	private Matrix4f projectionMatrix;
 	
 	public Renderer(StaticShader shader) {
+		GL11.glEnable(GL11.GL_CULL_FACE);
+		GL11.glCullFace(GL11.GL_BACK);
 		createProjectionMatrix();
 		shader.start();
 		shader.loadProjectionMatrix(projectionMatrix);
@@ -43,6 +46,8 @@ public class Renderer {
 		GL20.glEnableVertexAttribArray(2);
 		Matrix4f transformationMatrix = MathUtils.createTransformationMatrix(entity.getPosition(), entity.getRotX(), entity.getRotY(), entity.getRotZ(), entity.getScale());
 		shader.loadTransformationMatrix(transformationMatrix);
+		ModelTexture texture = model.getTexture();
+		shader.loadShineVariables(texture.getShineDamper(), texture.getReflectivity());
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getTextureID());
 		GL11.glDrawElements(GL11.GL_TRIANGLES, rawModel.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
