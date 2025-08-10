@@ -25,14 +25,17 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		
 		
-		RawModel model = OBJLoader.loadObjModel("tree", loader);
+		RawModel tree_model = OBJLoader.loadObjModel("tree", loader);
+		RawModel grass_model = OBJLoader.loadObjModel("grassModel", loader);
 		
-		TexturedModel staticModel = new TexturedModel(model,new ModelTexture(loader.loadTexture("tree")));
+		TexturedModel staticTreeModel = new TexturedModel(tree_model,new ModelTexture(loader.loadTexture("tree")));
+		TexturedModel staticGrassModel = new TexturedModel(grass_model,new ModelTexture(loader.loadTexture("grassTexture")));
 		
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
 		for(int i=0;i<500;i++){
-			entities.add(new Entity(staticModel, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,3));
+			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,3));
+			entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat()*400 - 200,0,random.nextFloat() * -600),0,0,0,2));
 		}
 		
 		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
