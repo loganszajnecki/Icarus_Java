@@ -16,31 +16,18 @@ import shaders.StaticShader;
 import textures.ModelTexture;
 import toolbox.MathUtils;
 
-public class Renderer {
-	
-	private static final float FOV = 70;
-	private static final float NEAR_PLANE = 0.1f;
-	private static final float FAR_PLANE = 1000.0f;
+public class EntityRenderer {
 	
 	
-	private Matrix4f projectionMatrix;
+
 	private StaticShader shader;
 	
 	
-	public Renderer(StaticShader shader) {
+	public EntityRenderer(StaticShader shader, Matrix4f projectionMatrix) {
 		this.shader = shader;
-		GL11.glEnable(GL11.GL_CULL_FACE);
-		GL11.glCullFace(GL11.GL_BACK);
-		createProjectionMatrix();
 		shader.start();
 		shader.loadProjectionMatrix(projectionMatrix);
 		shader.stop();
-	}
-	
-	public void prepare() {
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
-		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
-		GL11.glClearColor(0.5f,0.5f,0.5f,0.5f);
 	}
 	
 	public void render(Map<TexturedModel, List<Entity>> entities) {
@@ -80,13 +67,5 @@ public class Renderer {
 		shader.loadTransformationMatrix(transformationMatrix);
 		
 	}
-	
-	private void createProjectionMatrix() {
-	    float aspectRatio = DisplayManager.getAspectRatio();
-	    float fovRadians = (float) Math.toRadians(FOV);
 
-	    projectionMatrix = new Matrix4f()
-	        .identity()
-	        .perspective(fovRadians, aspectRatio, NEAR_PLANE, FAR_PLANE);
-	}
 }
