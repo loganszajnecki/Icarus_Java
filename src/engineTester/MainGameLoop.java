@@ -37,10 +37,12 @@ public class MainGameLoop {
 		
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
-		for(int i=0;i<500;i++){
-			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,3));
-			entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat()*800 - 200,0,random.nextFloat() * -600),0,0,0,1));
-			entities.add(new Entity(staticFernModel, new Vector3f(random.nextFloat()*800 - 200,0,random.nextFloat() * -600),0,0,0,0.6f));
+		for(int i=0;i<20;i++){
+			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,3));
+			for(int j=0;j<10;j++){
+				entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,1));
+				entities.add(new Entity(staticFernModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,0.6f));
+			}
 		}
 		
 		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
@@ -49,8 +51,8 @@ public class MainGameLoop {
 		List<Terrain> terrains = new ArrayList<>();
 		ModelTexture grassTex = new ModelTexture(loader.loadTexture("grass"));
 
-		for (int gz = -20; gz <= 20; gz++) {
-		    for (int gx = -2; gx <= 2; gx++) {
+		for (int gz = -10; gz <= 0; gz++) {
+		    for (int gx = -10; gx <= 0; gx++) {
 		        terrains.add(new Terrain(gx, gz, loader, grassTex));
 		    }
 		}
