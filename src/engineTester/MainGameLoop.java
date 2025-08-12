@@ -31,14 +31,16 @@ public class MainGameLoop {
 		TexturedModel staticTreeModel = new TexturedModel(tree_model,new ModelTexture(loader.loadTexture("tree")));
 		TexturedModel staticGrassModel = new TexturedModel(grass_model,new ModelTexture(loader.loadTexture("grassTexture")));
 		staticGrassModel.getTexture().setHasTransparency(true);
+		staticGrassModel.getTexture().setUseFakeLighting(true);
 		
 		TexturedModel staticFernModel = new TexturedModel(OBJLoader.loadObjModel("fern", loader), new ModelTexture(loader.loadTexture("fern")));
 		staticFernModel.getTexture().setHasTransparency(true);
+		staticFernModel.getTexture().setUseFakeLighting(true);
 		
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
 		for(int i=0;i<20;i++){
-			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,3));
+			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,5));
 			for(int j=0;j<10;j++){
 				entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,1));
 				entities.add(new Entity(staticFernModel, new Vector3f(random.nextFloat()*100 - 100,0,random.nextFloat() * -100),0,0,0,0.6f));
