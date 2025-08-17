@@ -70,6 +70,8 @@ public class Camera {
 		    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.fma(-speed, forward);
 		    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.fma(speed, right);
 		    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.fma(-speed, right);
+		    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) position.y += speed;
+		    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) position.y -= speed;
 	    } else {
 	    	return;
 	    }
