@@ -11,8 +11,8 @@ out vec3 toLightVector;
 out vec3 toCameraVector;
 out float visibility;
 
-const float density = 0.007;
-const float gradient = 1.5;
+const float density = 0.0035;
+const float gradient = 3.0;
 
 
 // uniforms 
@@ -28,7 +28,7 @@ void main(void) {
 	vec4 worldPosition = transformationMatrix * vec4(position, 1.0);
 	vec4 positionRelativeToCam = viewMatrix * worldPosition;
 	gl_Position = projectionMatrix * positionRelativeToCam; // where on the screen to render the incoming vertex
-	pass_textureCoords = textureCoords*40.0;
+	pass_textureCoords = textureCoords;
 	
 	vec3 actualNormal = normal;
 	if(useFakeLighting > 0.5){
