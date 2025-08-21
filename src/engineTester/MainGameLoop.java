@@ -48,6 +48,9 @@ public class MainGameLoop {
 			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * -600), 0, 0, 0, 5f));
 			entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * -600), 0, 0, 0, 1f));
 			entities.add(new Entity(staticFernModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * -600), 0, 0, 0, 0.6f));
+			entities.add(new Entity(staticTreeModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * 600), 0, 0, 0, 5f));
+			entities.add(new Entity(staticGrassModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * 600), 0, 0, 0, 1f));
+			entities.add(new Entity(staticFernModel, new Vector3f(random.nextFloat() * 800 - 400, 0, random.nextFloat() * 600), 0, 0, 0, 0.6f));
 
 
 		}
